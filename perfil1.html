@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HomeFix Dashboard</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f0f0f0;
+    padding:10px;
+}
+
+.container{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+}
+
+.header{
+    background:#dcdcdc;
+    border-radius:15px;
+    padding:10px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#39b54a;
+    font-weight:bold;
+}
+
+.logo img{
+    width:40px;
+}
+
+.fecha{
+    text-align:center;
+    font-weight:bold;
+}
+
+.fecha small{
+    display:block;
+    margin-top:5px;
+}
+
+.user{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.user img{
+    width:50px;
+    height:50px;
+}
+
+.estado{
+    color:green;
+    font-size:12px;
+}
+
+.main{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:10px;
+}
+
+.card{
+    background:#ddd;
+    border-radius:20px;
+    padding:10px;
+}
+
+.search{
+    display:flex;
+    margin-bottom:10px;
+}
+
+.search input{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:20px;
+}
+
+.filters{
+    display:flex;
+    gap:5px;
+    margin-bottom:10px;
+}
+
+.filters button{
+    border:none;
+    padding:8px 15px;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+.active-filter{
+    background:#65e36f;
+}
+
+.user-mini{
+    display:flex;
+    align-items:center;
+    background:#cfcfcf;
+    padding:10px;
+    border-radius:15px;
+    margin-bottom:10px;
+    justify-content:space-between;
+}
+
+.user-mini img{
+    width:40px;
+}
+
+.job{
+    background:#cfcfcf;
+    border-radius:15px;
+    padding:10px;
+}
+
+.job-content{
+    display:flex;
+    gap:10px;
+}
+
+.job-content img{
+    width:90px;
+}
+
+.details{
+    flex:1;
+}
+
+.details ul{
+    list-style:none;
+    margin-top:10px;
+}
+
+.details li{
+    margin-bottom:5px;
+}
+
+.actions{
+    display:flex;
+    gap:5px;
+    margin-top:10px;
+}
+
+.actions button{
+    border:none;
+    color:white;
+    padding:8px 12px;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+.chat{
+    background:#4f7cff;
+}
+
+.accept{
+    background:#35c84b;
+}
+
+.reject{
+    background:#ff3f3f;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.agenda-item,
+.message{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#d7d7d7;
+    border-radius:12px;
+    padding:8px;
+    margin-bottom:10px;
+}
+
+.agenda-item img,
+.message img{
+    width:45px;
+}
+
+.tag{
+    background:#65e36f;
+    padding:4px 10px;
+    border-radius:10px;
+    font-size:12px;
+    display:inline-block;
+    margin-bottom:5px;
+}
+
+.menu-bottom{
+    position:fixed;
+    bottom:10px;
+    left:10px;
+    display:flex;
+    gap:10px;
+}
+
+.menu-btn{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:#65e36f;
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.side-menu{
+    position:fixed;
+    left:10px;
+    bottom:60px;
+    background:white;
+    border-radius:10px;
+    width:100px;
+    display:none;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.side-menu ul{
+    list-style:none;
+}
+
+.side-menu li{
+    padding:10px;
+    cursor:pointer;
+}
+
+.side-menu li:hover{
+    background:#eee;
+}
+
+.notificacion{
+    width:10px;
+    height:10px;
+    background:red;
+    border-radius:50%;
+    position:absolute;
+    top:3px;
+    right:3px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<div class="logo">
+🏠 <span>HOMEFIX</span>
+</div>
+
+<div class="fecha">
+Jueves 12 de Marzo del 2026
+<small id="hora"></small>
+</div>
+
+<div class="user">
+<div>
+<b>User</b>
+<div class="estado">● Activo</div>
+</div>
+👤
+</div>
+
+</div>
+
+<div class="main">
+
+<!-- IZQUIERDA -->
+<div>
+
+<div class="search">
+<input type="text" placeholder="Busca tus solicitudes de trabajo o empleadores">
+</div>
+
+<div class="filters">
+<button class="active-filter">Todos</button>
+<button>8 horas</button>
+<button>6 horas</button>
+<button>4 horas</button>
+<button>Hoy</button>
+</div>
+
+<div class="user-mini">
+<div style="display:flex;align-items:center;gap:10px;">
+👤
+<div>
+<b>User</b><br>
+<small>Necesito un empleador...</small>
+</div>
+</div>
+
+<button onclick="toggleSolicitud()">▼</button>
+</div>
+
+<div class="job" id="solicitud">
+
+<div class="job-content">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+<div class="details">
+
+<p>
+Necesito un empleador para arreglar mi vivienda y mi jardín.
+</p>
+
+<ul>
+<li>💰 800 - 1200 PM</li>
+<li>📍 120.000</li>
+<li>🏠 Calle 22</li>
+<li>⏳ 4 horas</li>
+</ul>
+
+<div class="actions">
+<button class="chat" onclick="hablar()">Hablar</button>
+<button class="accept" onclick="aceptar()">Aceptar</button>
+<button class="reject" onclick="cancelar()">Cancelar</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- AGENDA -->
+<div class="card">
+
+<div class="section-title">
+📅 Agenda
+</div>
+
+<div class="tag">Hoy</div>
+
+<div class="agenda-item">
+👤 User ▼
+</div>
+
+<div class="tag">29 marzo</div>
+
+<div class="agenda-item">
+👤 User ▼
+</div>
+
+<div class="section-title">
+📅 Abril
+</div>
+
+<div class="tag">Mañana</div>
+
+<div class="agenda-item">
+👤 User ▼
+</div>
+
+<div class="tag">12 abril</div>
+
+<div class="agenda-item">
+👤 User ▼
+</div>
+
+</div>
+
+<!-- BANDEJA -->
+<div class="card">
+
+<div class="section-title">
+📥 Bandeja
+</div>
+
+<div class="message">
+👤
+<div>
+<b>User</b><br>
+<small>Ha aceptado tu trabajo #001</small>
+</div>
+</div>
+
+<div class="message">
+👤
+<div>
+<b>User</b><br>
+<small>Está interesado en tu solicitud</small>
+</div>
+</div>
+
+<div class="message">
+👤
+<div>
+<b>User</b><br>
+<small>Ha calificado tu servicio #002</small>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="side-menu" id="menu">
+<ul>
+<li onclick="perfil()">Perfil</li>
+<li onclick="ajustes()">Ajustes</li>
+<li onclick="soporte()">Soporte</li>
+<li onclick="historial()">Historial</li>
+</ul>
+</div>
+
+<div class="menu-bottom">
+
+<button class="menu-btn" onclick="chatGlobal()">💬</button>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+</div>
+
+<script>
+
+function actualizarHora(){
+    const ahora=new Date();
+    document.getElementById("hora").innerHTML=
+    ahora.toLocaleTimeString();
+}
+
+setInterval(actualizarHora,1000);
+actualizarHora();
+
+function toggleMenu(){
+    let menu=document.getElementById("menu");
+
+    if(menu.style.display==="block"){
+        menu.style.display="none";
+    }else{
+        menu.style.display="block";
+    }
+}
+
+function toggleSolicitud(){
+    let solicitud=document.getElementById("solicitud");
+
+    if(solicitud.style.display==="none"){
+        solicitud.style.display="block";
+    }else{
+        solicitud.style.display="none";
+    }
+}
+
+function hablar(){
+    alert("Abriendo chat...");
+}
+
+function aceptar(){
+    alert("Trabajo aceptado.");
+}
+
+function cancelar(){
+    alert("Trabajo cancelado.");
+}
+
+function perfil(){
+    alert("Perfil");
+}
+
+function ajustes(){
+    alert("Ajustes");
+}
+
+function soporte(){
+    alert("Soporte");
+}
+
+function historial(){
+    alert("Historial");
+}
+
+function chatGlobal(){
+    alert("Mensajes");
+}
+
+</script>
+
+</body>
+</html>
