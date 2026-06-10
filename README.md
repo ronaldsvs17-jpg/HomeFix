@@ -1,155 +1,304 @@
-# HOMEFIX
+# 🏠 HOMEFIX
 
-## Descripción del proyecto
+## Plataforma de Intermediación para Servicios del Hogar
 
-HomeFix es una plataforma web diseñada para conectar empleadores con trabajadores domésticos y de servicios para el hogar. La aplicación permite a los usuarios registrarse, iniciar sesión, buscar oportunidades laborales, gestionar solicitudes y mantener comunicación entre las partes involucradas.
+---
 
-## Objetivo
+## 📖 Descripción General
 
-Facilitar la contratación de trabajadores para servicios del hogar mediante una plataforma segura, organizada y fácil de usar.
+**HomeFix** es una plataforma web desarrollada para facilitar la conexión entre empleadores y trabajadores especializados en servicios domésticos y mantenimiento del hogar.
 
-## Funcionalidades principales
+La aplicación permite publicar ofertas laborales, buscar personal calificado, gestionar postulaciones y establecer una comunicación directa entre las partes, ofreciendo una experiencia segura, organizada y eficiente.
 
-### Empleado
+---
 
-* Crear cuenta.
-* Iniciar sesión.
-* Recuperar contraseña.
-* Crear y editar perfil.
-* Buscar trabajos disponibles.
-* Enviar postulaciones.
-* Aceptar trabajos.
-* Cancelar trabajos.
-* Comunicarse con empleadores.
-* Gestionar agenda de actividades.
-* Consultar historial de trabajos.
+## 🎯 Objetivo del Proyecto
 
-### Empleador
+Desarrollar una solución tecnológica que simplifique la contratación de personal para servicios del hogar, permitiendo una gestión rápida, confiable y accesible tanto para empleadores como para trabajadores.
 
-* Crear cuenta.
-* Iniciar sesión.
-* Recuperar contraseña.
-* Crear perfil.
-* Publicar ofertas de trabajo.
-* Buscar empleados.
-* Revisar postulaciones.
-* Contratar empleados.
-* Cancelar solicitudes.
-* Comunicarse con empleados.
-* Calificar trabajadores.
+---
 
-### Administrador
+## 🚀 Funcionalidades del Sistema
 
-* Gestionar usuarios.
-* Gestionar publicaciones.
-* Supervisar la plataforma.
-* Resolver reportes.
-* Generar estadísticas.
-* Administrar permisos.
+### 👷 Empleado
 
-## Tecnologías utilizadas
+- Crear cuenta.
+- Iniciar sesión.
+- Recuperar contraseña.
+- Crear y editar perfil.
+- Buscar trabajos disponibles.
+- Enviar postulaciones.
+- Aceptar trabajos.
+- Cancelar trabajos.
+- Comunicarse con empleadores.
+- Gestionar agenda de actividades.
+- Consultar historial de trabajos.
+
+### 🏡 Empleador
+
+- Crear cuenta.
+- Iniciar sesión.
+- Recuperar contraseña.
+- Crear perfil.
+- Publicar ofertas de trabajo.
+- Buscar empleados.
+- Revisar postulaciones.
+- Contratar empleados.
+- Cancelar solicitudes.
+- Comunicarse con empleados.
+- Calificar trabajadores.
+
+### ⚙️ Administrador
+
+- Gestionar usuarios.
+- Gestionar publicaciones.
+- Supervisar la plataforma.
+- Resolver reportes.
+- Generar estadísticas.
+- Administrar permisos.
+- Monitorear actividad del sistema.
+
+---
+
+## 🛠 Tecnologías Utilizadas
 
 ### Frontend
 
-* HTML5
-* CSS3
-* JavaScript
+- HTML5
+- CSS3
+- JavaScript
 
 ### Backend
 
-* FastAPI
+- FastAPI
 
-### Base de datos
+### Base de Datos
 
-* PostgreSQL
+- PostgreSQL
 
-## Estructura del proyecto
+### Herramientas
+
+- Visual Studio Code
+- Git
+- GitHub
+
+---
+
+## 📂 Estructura del Proyecto
 
 ```text
 HOMEFIX
 │
-├── login.html
-├── registro.html
-├── dashboard_empleado.html
-├── css/
-├── js/
-├── assets/
-│   ├── imagenes/
-│   └── iconos/
+├── frontend/
+│   ├── login.html
+│   ├── registro.html
+│   ├── dashboard_empleado.html
+│   ├── dashboard_empleador.html
+│   ├── perfil_empleado.html
+│   ├── perfil_empleador.html
+│   │
+│   ├── css/
+│   │   └── style.css
+│   │
+│   ├── js/
+│   │   └── app.js
+│   │
+│   └── assets/
+│       ├── imagenes/
+│       └── iconos/
 │
 ├── backend/
 │   ├── main.py
-│   ├── models.py
 │   ├── database.py
+│   ├── models.py
+│   ├── schemas.py
+│   ├── crud.py
+│   │
 │   └── routers/
+│       ├── usuarios.py
+│       ├── empleos.py
+│       ├── postulaciones.py
+│       └── mensajes.py
+│
+├── database/
+│   └── homefix.sql
+│
+├── requirements.txt
 │
 └── README.md
 ```
 
-## Requisitos
+---
 
-* Navegador web actualizado.
-* Visual Studio Code.
-* Python 3.10 o superior.
-* PostgreSQL.
+## 💻 Requisitos
 
-## Instalación
+Antes de ejecutar el proyecto asegúrate de tener instalado:
 
-1. Clonar el repositorio.
+- Python 3.10 o superior.
+- PostgreSQL.
+- Visual Studio Code.
+- Git.
+- Navegador web actualizado.
+
+---
+
+## ⚡ Instalación
+
+### 1. Clonar el repositorio
 
 ```bash
 git clone https://github.com/usuario/homefix.git
 ```
 
-2. Ingresar al proyecto.
+### 2. Ingresar al proyecto
 
 ```bash
 cd homefix
 ```
 
-3. Instalar dependencias.
+### 3. Crear entorno virtual
 
 ```bash
-pip install fastapi uvicorn sqlalchemy psycopg2-binary
+python -m venv venv
 ```
 
-4. Configurar la base de datos PostgreSQL.
+### 4. Activar entorno virtual
 
-5. Ejecutar el servidor.
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Linux/Mac:
+
+```bash
+source venv/bin/activate
+```
+
+### 5. Instalar dependencias
+
+```bash
+pip install fastapi uvicorn sqlalchemy psycopg2-binary python-dotenv
+```
+
+### 6. Configurar PostgreSQL
+
+Crear la base de datos:
+
+```sql
+CREATE DATABASE homefix;
+```
+
+Modificar los datos de conexión en:
+
+```python
+database.py
+```
+
+Ejemplo:
+
+```python
+DATABASE_URL = "postgresql://postgres:123456@localhost/homefix"
+```
+
+### 7. Ejecutar el servidor
 
 ```bash
 uvicorn main:app --reload
 ```
 
-6. Abrir el navegador y acceder a:
+### 8. Abrir la aplicación
+
+Frontend:
+
+```text
+http://localhost
+```
+
+Backend:
 
 ```text
 http://localhost:8000
 ```
 
-## Módulos implementados
+Documentación FastAPI:
 
-* Inicio de sesión.
-* Registro de usuarios.
-* Dashboard para empleados.
-* Gestión de trabajos.
-* Agenda.
-* Notificaciones.
-* Mensajería básica.
+```text
+http://localhost:8000/docs
+```
 
-## Autores
+---
 
-* Ronald Stiven Verano Sosa
-* Johan Esteban Olaya Falla
+## 📋 Módulos Implementados
 
-## Instructor
+- ✅ Registro de usuarios.
+- ✅ Inicio de sesión.
+- ✅ Recuperación de contraseña.
+- ✅ Gestión de perfiles.
+- ✅ Publicación de ofertas laborales.
+- ✅ Búsqueda de trabajadores.
+- ✅ Gestión de postulaciones.
+- ✅ Dashboard para empleados.
+- ✅ Dashboard para empleadores.
+- ✅ Agenda de actividades.
+- ✅ Sistema de notificaciones.
+- ✅ Mensajería interna.
+- ✅ Administración de usuarios.
+
+---
+
+## 🔒 Seguridad
+
+El sistema implementa:
+
+- Autenticación de usuarios.
+- Control de acceso por roles.
+- Validación de formularios.
+- Protección de datos.
+- Gestión de sesiones.
+
+---
+
+## 📈 Beneficios
+
+- Facilita la contratación de trabajadores.
+- Reduce el tiempo de búsqueda de empleo.
+- Organiza la gestión de servicios.
+- Permite comunicación directa entre usuarios.
+- Centraliza la información laboral.
+- Mejora la experiencia de contratación.
+
+---
+
+## 👨‍💻 Autores
+
+- Ronald Stiven Verano Sosa
+- Johan Esteban Olaya Falla
+
+---
+
+## 👨‍🏫 Instructor
 
 Eduardo Foglia
 
-## Institución
+---
 
-SENA - Centro de Gestión de Mercados, Logística y Tecnologías de la Información (CGMLTI)
+## 🏫 Institución
 
-## Fecha
+**SENA**  
+Centro de Gestión de Mercados, Logística y Tecnologías de la Información (CGMLTI)
 
-2026
+---
+
+## 📅 Fecha
+
+Junio 2026
+
+---
+
+## 📄 Licencia
+
+Proyecto académico desarrollado como evidencia de formación para el programa ADSO del SENA.
+
+© 2026 HomeFix. Todos los derechos reservados.
